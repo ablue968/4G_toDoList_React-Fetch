@@ -1,13 +1,78 @@
 @import "~bootstrap/scss/bootstrap.scss";
 
-/* 
+body {
+  background: #f2f4f4;
+  min-height: 60vh;
+}
 
-    You can write your own styles here...
-    
-    
-    ...Or you can use the import command to include 
-    other sylesheets into your bunde as well, e.j:
-    
-    import 'relative/path/to/stylesheet.scss';
+.header {
+    margin: 0 auto;
+    width: 520px;
+    text-align: center;
+    font-size: 84px;
+    font-weight: 300;
+    color: #d1c7db;
+}
 
-*/
+
+.toDos input{
+  min-width: 30vw;
+  max-width: 40vw;
+}
+
+ul {
+  min-width: 30vw;
+  max-width: 40vw;
+  cursor: pointer;
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  min-width: 30vw;
+  max-width: 40vw;
+  line-height: 2em;
+  margin: 0;
+  color: #666;
+  display: flex;
+  justify-content: space-between;
+  border: 0.25px solid #d4d6d8;
+  background: white;
+}
+
+.listItem {
+  color: #474647;
+}
+
+input#addItem {
+  background: #d1c7db;
+  font-size: 24px;
+  color: #6d6b6d;
+  border: none;
+  width: 100%;
+  padding: 10px 10px 10px 20px;
+}
+
+.flexItems {
+  padding-left: 20px;
+  font-size: 24px;
+}
+
+.deleter {
+  padding-right: 10px;
+}
+
+
+li:hover span {
+  visibility: visible;
+}
+
+#counter {
+  font-size: 11px;
+  padding-left: 4px;
+  color: #918f91;
+}
+
+.btn{
+    border-radius: 100%;
+}
