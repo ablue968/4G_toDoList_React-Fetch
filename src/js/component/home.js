@@ -16,25 +16,27 @@ export class Home extends React.Component {
 		let key = e.which || e.keyCode || 0;
 		if (key !== 13) return;
 
-		let newContacts = this.state.contacts;
-		let newObject = { label: this.state.input, done: false };
-		newContacts.push(newObject);
-		fetch(link, {
-			method: "PUT",
-			body: JSON.stringify(newContacts),
-			headers: {
-				"Content-Type": "application/json"
-			}
-		})
-			.then(newRes => newRes.text())
-			.then(response => {
-				console.log(response);
-				this.setState({
-					contacts: newContacts,
-					input: ""
-				});
+		if (this.state.input != "") {
+			let newContacts = this.state.contacts;
+			let newObject = { label: this.state.input, done: false };
+			newContacts.push(newObject);
+			fetch(link, {
+				method: "PUT",
+				body: JSON.stringify(newContacts),
+				headers: {
+					"Content-Type": "application/json"
+				}
 			})
-			.catch(error => console.error("Error:", error));
+				.then(newRes => newRes.text())
+				.then(response => {
+					console.log(response);
+					this.setState({
+						contacts: newContacts,
+						input: ""
+					});
+				})
+				.catch(error => console.error("Error:", error));
+		}
 	};
 
 	deleteListItems = index => {
@@ -60,8 +62,14 @@ export class Home extends React.Component {
 	render() {
 		return (
 			<div className="container-fluid">
-				<div className="header">
+				<div className="header m-auto d-flex justify-content-center">
 					<h1>Todos</h1>
+					<button
+						type="button"
+						className="btn btn-warning ml-5"
+						onClick={() => this.setState({ contacts: [] })}>
+						clear all
+					</button>
 				</div>
 				<div className="text-center toDos">
 					<input
