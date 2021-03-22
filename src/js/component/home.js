@@ -12,6 +12,27 @@ export class Home extends React.Component {
 		};
 	}
 
+	async loadTodos() {
+		var requestOptions = {
+			method: "GET"
+		};
+		try {
+			let res = await fetch(link, requestOptions);
+			let result = await res.json();
+			let todoList = result.map((element, index) => {
+				element.id = index;
+				return element;
+			});
+			this.setState({ ...this.state, contacts: todoList });
+		} catch (error) {
+			console.log("error", error);
+		}
+	}
+
+	componentDidMount() {
+		this.loadTodos();
+	}
+
 	addListItems = e => {
 		let key = e.which || e.keyCode || 0;
 		if (key !== 13) return;
